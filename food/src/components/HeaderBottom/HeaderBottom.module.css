@@ -1,0 +1,23 @@
+.logo {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
+
+.headerBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.phoneMe {
+  color: rgb(33, 184, 133);
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.phoneMe:hover {
+  color: rgb(26, 143, 105);
+  transform: scale(1.1);
+  text-decoration: underline;
+}
