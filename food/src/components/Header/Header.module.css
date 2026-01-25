@@ -1,6 +1,6 @@
 .headerMenu {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
   padding: 8px 20px;
@@ -12,6 +12,52 @@
   right: 0;
   width: 100%;
   z-index: 10;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.logoIcon {
+  font-size: 64px;
+  color: #1c8b6b;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: logoColorPulse 3s ease-in-out infinite;
+}
+
+.logoLink:hover .logoIcon {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes logoColorPulse {
+  0% {
+    color: #1c8b6b;
+  }
+  33% {
+    color: #22c08a;
+  }
+  66% {
+    color: #eca304;
+  }
+  100% {
+    color: #1c8b6b;
+  }
+}
+
+.menuItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0;
+  flex: 1;
 }
 
 .logo {
@@ -215,6 +261,10 @@
   .headerMenu {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .menuItems {
+    flex-wrap: wrap;
   }
 
   .socialIcons {

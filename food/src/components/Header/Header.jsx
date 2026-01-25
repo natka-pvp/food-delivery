@@ -8,6 +8,7 @@ import {
   FaEnvelope,
   FaShoppingCart,
 } from 'react-icons/fa'
+import { GiCook } from 'react-icons/gi'
 
 import Modal from '../../Modal/Modal'
 
@@ -33,19 +34,24 @@ function Header({ cartCount = 0 }) {
   return (
     <div>
       <div className={s.headerMenu}>
-        {menuItems.map((item) => {
-          return (
-            <div
-              key={item}
-              className={`${s.headerMenuItem} ${
-                activeItem === item ? s.active : ''
-              }`}
-              onClick={() => setActiveItem(item)}
-            >
-              {item}
-            </div>
-          )
-        })}
+        <Link className={s.logoLink} to="/" aria-label="Главная">
+          <GiCook className={s.logoIcon} />
+        </Link>
+        <div className={s.menuItems}>
+          {menuItems.map((item) => {
+            return (
+              <div
+                key={item}
+                className={`${s.headerMenuItem} ${
+                  activeItem === item ? s.active : ''
+                }`}
+                onClick={() => setActiveItem(item)}
+              >
+                {item}
+              </div>
+            )
+          })}
+        </div>
         <div className={s.socialIcons}>
           <div className={s.socialIconsWrapper}>
             {socialIcons.map((social) => (
