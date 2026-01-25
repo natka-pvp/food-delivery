@@ -1,0 +1,76 @@
+.products {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 16px;
+  grid-auto-rows: 130px;
+  grid-auto-flow: dense;
+}
+
+.card {
+  position: relative;
+  padding: 20px;
+  border-radius: 16px;
+  min-height: 140px;
+  background-color: #f2f2f2;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
+}
+
+.cardTitle {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: orangered;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.small {
+  grid-row: span 1;
+}
+
+.medium {
+  grid-row: span 2;
+}
+
+.wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.tall {
+  grid-row: span 3;
+}
+

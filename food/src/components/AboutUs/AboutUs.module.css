@@ -1,0 +1,42 @@
+.aboutUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 28px;
+  max-width: 900px;
+  margin: 24px auto;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(18, 24, 32, 0.12);
+  border: 1px solid rgba(28, 139, 107, 0.12);
+}
+
+.aboutUs h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #142126;
+  letter-spacing: 0.5px;
+}
+
+.aboutUs p {
+  margin: 0;
+  font-size: 16px;
+  color: #51626c;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+@media (max-width: 768px) {
+  .aboutUs {
+    padding: 24px 18px;
+    margin: 20px 16px;
+  }
+
+  .aboutUs h1 {
+    font-size: 22px;
+  }
+}

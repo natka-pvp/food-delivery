@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import s from './Header.module.css'
-import { FaTelegram, FaInstagram, FaViber, FaEnvelope } from 'react-icons/fa'
+import {
+  FaTelegram,
+  FaInstagram,
+  FaViber,
+  FaEnvelope,
+  FaShoppingCart,
+} from 'react-icons/fa'
 
 import Modal from '../../Modal/Modal'
 
-function Header() {
+function Header({ cartCount = 0 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const menuItems = [
     'О компании',
@@ -40,11 +47,21 @@ function Header() {
           )
         })}
         <div className={s.socialIcons}>
-          {socialIcons.map((social) => (
-            <div key={social.name} className={s.socialIcon} title={social.name}>
-              {social.icon}
-            </div>
-          ))}
+          <div className={s.socialIconsWrapper}>
+            {socialIcons.map((social) => (
+              <div key={social.name} className={s.socialIcon} title={social.name}>
+                {social.icon}
+              </div>
+            ))}
+          </div>
+          <div className={s.workingHours}>
+            <p className={s.workingHoursText}>Режим работы:</p>
+            <p className={s.workingHoursTime}>Пн-Вс: 10:00 - 22:00</p>
+          </div>
+          <Link className={s.cart} to="/cart" title="Корзина">
+            <FaShoppingCart />
+            <span className={s.cartBadge}>{cartCount}</span>
+          </Link>
           <p className={s.login} onClick={() => setIsModalOpen(true)}>
             Вход
           </p>
