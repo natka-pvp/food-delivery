@@ -13,6 +13,8 @@ import BasketPage from './components/PagesProject/BasketPage/BasketPage'
 import HowWeWork from './components/HowWeWork/HowWeWork'
 import DailyMenuExample from './components/DailyMenuExample/DailyMenuExample'
 import Cook from './components/Cook/Cook'
+import OurService from './components/OurService/OurService'
+import Footer from './components/Footer/Footer'
 import './App.css'
 
 function HomePage({ cart, setCart }) {
@@ -48,6 +50,12 @@ function HomePage({ cart, setCart }) {
       </section>
       <section className="waveSection">
         <Cook />
+      </section>
+      <section className="waveSection">
+        <OurService />
+      </section>
+      <section className="waveSection">
+        <Footer />
       </section>
     </>
   )
