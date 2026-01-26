@@ -8,24 +8,24 @@
   max-width: 900px;
   margin: 24px auto;
   text-align: center;
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(18, 24, 32, 0.12);
-  border: 1px solid rgba(28, 139, 107, 0.12);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .aboutUs h1 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  color: #142126;
+  color: var(--text);
   letter-spacing: 0.5px;
 }
 
 .aboutUs p {
   margin: 0;
   font-size: 16px;
-  color: #51626c;
+  color: var(--muted);
   line-height: 1.6;
   max-width: 720px;
 }
