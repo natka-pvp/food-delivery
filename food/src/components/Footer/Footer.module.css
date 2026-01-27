@@ -5,6 +5,8 @@
 }
 
 .footerContent {
+  width: min(1100px, 94%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +27,21 @@
   text-align: center;
   text-shadow: none;
   max-width: 720px;
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.metaText {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.2px;
 }
 
 .logoLink {
