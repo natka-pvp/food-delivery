@@ -10,6 +10,11 @@ export default function Footer() {
           <GiCook className={s.logoIcon} />
         </Link>
         <div className={s.title}>Кормят тут</div>
+        <div className={s.meta}>
+          <p className={s.metaText}>ООО «КОРМЯТ ТУТ»</p>
+          <p className={s.metaText}>г. Витебск, ул. Суворова, 23-1</p>
+          <p className={s.metaText}>УНП 1234567890</p>
+        </div>
       </div>
     </footer>
   )
