@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { FaArrowUp, FaMoon, FaSun } from 'react-icons/fa'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header'
 import HeaderBottom from './components/HeaderBottom/HeaderBottom'
@@ -51,11 +51,21 @@ function App() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     return prefersDark ? 'dark' : 'light'
   })
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <BrowserRouter>
@@ -73,6 +83,16 @@ function App() {
       >
         {theme === 'dark' ? <FaSun /> : <FaMoon />}
       </button>
+      {showScrollTop && (
+        <button
+          className="scrollTop"
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Наверх"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </BrowserRouter>
   )
 }
