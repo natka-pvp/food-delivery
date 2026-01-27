@@ -28,12 +28,12 @@
   text-align: center;
   margin: 0;
   margin-bottom: 10px;
-  color: #2c3e50;
+  color: var(--text);
   letter-spacing: -0.5px;
 }
 
 .modalContent {
-  background-color: white;
+  background-color: var(--surface);
   padding: 40px;
   border-radius: 20px;
   width: 500px;
@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
   animation: slideUp 0.3s ease;
 }
 
@@ -62,11 +62,11 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--muted);
   line-height: 1;
   padding: 0;
   width: 35px;
@@ -79,8 +79,8 @@
 }
 
 .closeButton:hover {
-  color: #000;
-  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.16);
   transform: rotate(90deg);
 }
 
@@ -98,24 +98,25 @@
 .modalContent label {
   font-weight: 600;
   font-size: 14px;
-  color: #2c3e50;
+  color: var(--text);
   margin-bottom: 5px;
 }
 
 .modalContent input {
   padding: 12px 15px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border);
   border-radius: 10px;
   font-size: 15px;
-  background-color: #f9f9f9;
+  background-color: var(--surface-2);
+  color: var(--text);
   transition: all 0.3s ease;
   font-family: inherit;
 }
 
 .modalContent input:focus {
   outline: none;
-  border-color: rgb(33, 184, 133);
-  background-color: #fff;
+  border-color: var(--accent);
+  background-color: var(--surface);
   box-shadow: 0 0 0 3px rgba(33, 184, 133, 0.1);
   transform: translateY(-1px);
 }
@@ -130,7 +131,7 @@
 
 .privacyText {
   font-size: 12px;
-  color: #666;
+  color: var(--muted);
   text-align: start;
   margin: 0;
   line-height: 1.4;
