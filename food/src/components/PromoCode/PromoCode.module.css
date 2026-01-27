@@ -15,8 +15,8 @@
   width: min(560px, 100%);
   border-radius: 999px;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(18, 24, 32, 0.08);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
 }
 
 .promoCode input {
@@ -27,7 +27,7 @@
   border: none;
   border-radius: 0;
   background: transparent;
-  color: #1f2a2e;
+  color: var(--text);
   box-shadow: none;
   outline: none;
 }
@@ -37,7 +37,7 @@
 }
 
 .promoCode form:focus-within {
-  box-shadow: 0 6px 18px rgba(33, 184, 133, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 .promoCode button {

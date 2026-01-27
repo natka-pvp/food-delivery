@@ -8,9 +8,9 @@
   width: min(1000px, 92%);
   margin: 0 auto;
   padding: 24px;
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(18, 24, 32, 0.16);
+  box-shadow: var(--shadow);
   position: relative;
 }
 
@@ -18,7 +18,7 @@
   margin: 0 0 20px;
   font-size: 32px;
   font-weight: 700;
-  color: #1f2a2e;
+  color: var(--text);
 }
 
 .headerRow {
@@ -69,7 +69,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #1f2a2e;
+  color: var(--text);
   background: transparent;
   font-size: 24px;
   line-height: 1;
@@ -98,7 +98,7 @@
 .emptyText {
   margin: 0;
   font-size: 18px;
-  color: #5c6770;
+  color: var(--muted);
 }
 
 .backButton {
@@ -128,7 +128,7 @@
 .placeholder {
   margin: 0;
   font-size: 16px;
-  color: #7a8794;
+  color: var(--muted-2);
 }
 
 .content {
@@ -149,9 +149,9 @@
   gap: 16px;
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  background: #ffffff;
-  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.06);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-soft);
 }
 
 .itemImage {
@@ -171,13 +171,13 @@
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1f2a2e;
+  color: var(--text);
 }
 
 .itemMeta {
   margin: 0;
   font-size: 14px;
-  color: #6b7680;
+  color: var(--muted);
 }
 
 .itemRow {
@@ -188,12 +188,12 @@
 }
 
 .itemQty {
-  color: #5c6770;
+  color: var(--muted);
 }
 
 .itemPrice {
   font-weight: 700;
-  color: #1f2a2e;
+  color: var(--text);
 }
 
 .qtyControls {

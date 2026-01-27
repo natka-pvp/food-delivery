@@ -8,7 +8,7 @@
   margin: 0 0 24px;
   font-size: 28px;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
 }
 
 .grid {
@@ -24,10 +24,10 @@
   padding: 20px;
   border-radius: 16px;
   min-height: 140px;
-  background-color: #f2f2f2;
+  background-color: var(--surface);
   background-size: cover;
   background-position: center;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
   display: flex;
@@ -36,7 +36,7 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
 

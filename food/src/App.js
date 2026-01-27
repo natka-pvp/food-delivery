@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header'
 import HeaderBottom from './components/HeaderBottom/HeaderBottom'
@@ -14,49 +15,29 @@ import HowWeWork from './components/HowWeWork/HowWeWork'
 import DailyMenuExample from './components/DailyMenuExample/DailyMenuExample'
 import Cook from './components/Cook/Cook'
 import OurService from './components/OurService/OurService'
+import Subscription from './components/Subscription/Subscription'
+import Contacts from './components/PagesProject/Contacts/Contacts'
 import Footer from './components/Footer/Footer'
+
 import './App.css'
 
 function HomePage({ cart, setCart }) {
   return (
     <>
       <HeaderBottom />
-      <section className="waveSection">
-        <AboutUs />
-      </section>
-      <section className="waveSection">
-        <Products />
-      </section>
-      <section className="waveSection">
-        <PromoCode />
-      </section>
-      <section className="waveSection">
-        <Main />
-      </section>
-      <section className="waveSection">
-        <Advantages />
-      </section>
-      <section className="waveSection">
-        <ChefCook />
-      </section>
-      <section className="waveSection">
-        <PopularEat cart={cart} setCart={setCart} />
-      </section>
-      <section className="waveSection">
-        <HowWeWork />
-      </section>
-      <section className="waveSection">
-        <DailyMenuExample cart={cart} setCart={setCart} />
-      </section>
-      <section className="waveSection">
-        <Cook />
-      </section>
-      <section className="waveSection">
-        <OurService />
-      </section>
-      <section className="waveSection">
-        <Footer />
-      </section>
+      <AboutUs />
+      <Products />
+      <PromoCode />
+      <Main />
+      <Advantages />
+      <ChefCook />
+      <PopularEat cart={cart} setCart={setCart} />
+      <HowWeWork />
+      <DailyMenuExample cart={cart} setCart={setCart} />
+      <Cook />
+      <OurService />
+      <Subscription />
+      <Footer />
     </>
   )
 }
@@ -64,6 +45,17 @@ function HomePage({ cart, setCart }) {
 function App() {
   const [cart, setCart] = useState(() => new Map())
   const cartCount = Array.from(cart.values()).reduce((sum, item) => sum + item.qty, 0)
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    return prefersDark ? 'dark' : 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   return (
     <BrowserRouter>
@@ -71,7 +63,16 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage cart={cart} setCart={setCart} />} />
         <Route path="/cart" element={<BasketPage cart={cart} setCart={setCart} />} />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
+      <button
+        className="themeToggle"
+        type="button"
+        onClick={() => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+        aria-label="Переключить тему"
+      >
+        {theme === 'dark' ? <FaSun /> : <FaMoon />}
+      </button>
     </BrowserRouter>
   )
 }
