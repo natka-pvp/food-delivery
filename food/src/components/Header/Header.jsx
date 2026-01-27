@@ -14,15 +14,16 @@ import Modal from '../../Modal/Modal'
 
 function Header({ cartCount = 0 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = [
-    'О компании',
-    'Блог',
-    'Бонусная программа',
-    'Доставка и оплата',
-    'Отзывы',
-    'Контакты',
+    { label: 'О компании' },
+    { label: 'Блог' },
+    { label: 'Бонусная программа' },
+    { label: 'Доставка и оплата' },
+    { label: 'Отзывы' },
+    { label: 'Контакты', to: '/contacts' },
   ]
-  const [activeItem, setActiveItem] = useState(menuItems[0])
+  const [activeItem, setActiveItem] = useState(menuItems[0].label)
 
   const socialIcons = [
     { icon: <FaTelegram />, name: 'Telegram' },
@@ -37,22 +38,51 @@ function Header({ cartCount = 0 }) {
         <Link className={s.logoLink} to="/" aria-label="Главная">
           <GiCook className={s.logoIcon} />
         </Link>
-        <div className={s.menuItems}>
+        <button
+          className={s.burger}
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
+          <span className={s.burgerLine} />
+          <span className={s.burgerLine} />
+          <span className={s.burgerLine} />
+        </button>
+        <div className={`${s.menuItems} ${s.desktopOnly}`}>
           {menuItems.map((item) => {
+            const content = (
+              <>
+                {item.label}
+              </>
+            )
             return (
-              <div
-                key={item}
-                className={`${s.headerMenuItem} ${
-                  activeItem === item ? s.active : ''
-                }`}
-                onClick={() => setActiveItem(item)}
-              >
-                {item}
-              </div>
+              <React.Fragment key={item.label}>
+                {item.to ? (
+                  <Link
+                    className={`${s.headerMenuItem} ${
+                      activeItem === item.label ? s.active : ''
+                    }`}
+                    to={item.to}
+                    onClick={() => setActiveItem(item.label)}
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div
+                    className={`${s.headerMenuItem} ${
+                      activeItem === item.label ? s.active : ''
+                    }`}
+                    onClick={() => setActiveItem(item.label)}
+                  >
+                    {content}
+                  </div>
+                )}
+              </React.Fragment>
             )
           })}
         </div>
-        <div className={s.socialIcons}>
+        <div className={`${s.socialIcons} ${s.desktopOnly}`}>
           <div className={s.socialIconsWrapper}>
             {socialIcons.map((social) => (
               <div key={social.name} className={s.socialIcon} title={social.name}>
@@ -71,6 +101,74 @@ function Header({ cartCount = 0 }) {
           <p className={s.login} onClick={() => setIsModalOpen(true)}>
             Вход
           </p>
+        </div>
+      </div>
+      <div
+        className={`${s.mobileMenu} ${isMenuOpen ? s.mobileMenuOpen : ''}`}
+        aria-hidden={!isMenuOpen}
+      >
+        <div className={s.mobileMenuList}>
+          {menuItems.map((item) =>
+            item.to ? (
+              <Link
+                key={item.label}
+                className={s.mobileMenuItem}
+                to={item.to}
+                onClick={() => {
+                  setActiveItem(item.label)
+                  setIsMenuOpen(false)
+                }}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <button
+                key={item.label}
+                className={s.mobileMenuItem}
+                type="button"
+                onClick={() => {
+                  setActiveItem(item.label)
+                  setIsMenuOpen(false)
+                }}
+              >
+                {item.label}
+              </button>
+            )
+          )}
+        </div>
+        <div className={s.mobileMenuMeta}>
+          <div className={s.socialIconsWrapper}>
+            {socialIcons.map((social) => (
+              <div key={social.name} className={s.socialIcon} title={social.name}>
+                {social.icon}
+              </div>
+            ))}
+          </div>
+          <div className={s.workingHours}>
+            <p className={s.workingHoursText}>Режим работы:</p>
+            <p className={s.workingHoursTime}>Пн-Вс: 10:00 - 22:00</p>
+          </div>
+          <div className={s.mobileMenuActions}>
+            <Link
+              className={s.cart}
+              to="/cart"
+              title="Корзина"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaShoppingCart />
+              <span className={s.cartBadge}>{cartCount}</span>
+            </Link>
+            <button
+              className={s.login}
+              type="button"
+              onClick={() => {
+                setIsModalOpen(true)
+                setIsMenuOpen(false)
+              }}
+            >
+              Вход
+            </button>
+          </div>
         </div>
       </div>
       {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
