@@ -29,6 +29,10 @@
   z-index: 1;
 }
 
+[data-theme="dark"] .headerBottom::before {
+  background: rgba(0, 0, 0, 0.55);
+}
+
 /* Текст поверх затемнения */
 .headerBottom > * {
   position: relative;
@@ -53,10 +57,14 @@
 .text {
   font-size: 28px;
   font-weight: 700;
-  color: rgb(63, 61, 61);
+  color: #1f2a2e;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   max-width: 720px;
+}
+
+[data-theme="dark"] .text {
+  color: var(--text);
 }
 
 .textPhone {
